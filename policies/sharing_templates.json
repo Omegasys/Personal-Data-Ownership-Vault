@@ -1,0 +1,28 @@
+{
+  "templates": {
+    "minimal_identity": {
+      "description": "Share only basic identity metadata",
+      "fields": ["user_id", "display_name"],
+      "redact": ["email", "phone", "address"]
+    },
+
+    "contact_only": {
+      "description": "Share contact info without sensitive data",
+      "fields": ["email", "phone"],
+      "redact": ["address", "location_history", "device_info"]
+    },
+
+    "data_summary": {
+      "description": "Share aggregated insights only",
+      "fields": ["summary_stats", "counts"],
+      "redact": ["raw_data", "timestamps", "identifiers"]
+    },
+
+    "full_access_session": {
+      "description": "Temporary full access (high risk)",
+      "fields": ["*"],
+      "time_limit_seconds": 300,
+      "requires_explicit_confirmation": true
+    }
+  }
+}
